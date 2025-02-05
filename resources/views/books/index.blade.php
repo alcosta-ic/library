@@ -15,6 +15,10 @@
                    class="btn {{ request('sort_by') === 'price' ? 'btn-ghost btn-outline' : 'btn-ghost' }}">
                     Price {{ request('sort_by') === 'price' ? (request('sort_order') === 'asc' ? '🔼' : '🔽') : '↕️' }}
                 </a>
+
+                <form action="{{ route('export-books') }}" method="get">
+                    <button type="submit" class="btn btn-ghost btn-outline">Export Books to Excel</button>
+                </form>
             </div>
 
         <div class="flex justify-between items-center mb-6">

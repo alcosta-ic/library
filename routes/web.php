@@ -1,10 +1,12 @@
 <?php
 
+use App\Exports\BooksExport;
 use App\Http\Controllers\AuthorController;
 use App\Http\Controllers\BookController;
 use App\Http\Controllers\EditorController;
 use App\Http\Controllers\SearchController;
 use Illuminate\Support\Facades\Route;
+use Maatwebsite\Excel\Facades\Excel;
 
 Route::get('/', [BookController::class, 'index'])->name('books.index');
 Route::get('/books/create', [BookController::class, 'create'])->middleware('auth');
@@ -40,6 +42,10 @@ Route::delete('/authors/{author}', [AuthorController::class, 'destroy'])
     ->middleware('auth');
 
 Route::get('/search', SearchController::class);
+
+Route::get('export-books', function () {
+    return Excel::download(new BooksExport, 'books.xlsx');
+})->name('export-books');
 
 Route::middleware([
     'auth:sanctum',
