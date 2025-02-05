@@ -1,7 +1,7 @@
 <x-layout>
 
     <div class="card card-side bg-base-100 shadow-xl flex">
-        <figure class=" w-1/2 overflow-hidden">
+        <figure class="w-1/2 overflow-hidden">
             <img
                 class="object-cover w-full h-full"
                 src="{{ asset('storage/' . $book->cover_image) }}"

@@ -125,10 +125,10 @@ class BookController extends Controller
         if ($request->hasFile('cover_image')) {
             $logoPath = $request->cover_image->store('covers');
         } else {
-            $logoPath = $book->cover_image; // Mantém a imagem antiga se nenhuma nova for enviada
+            $logoPath = $book->cover_image;
         }
 
-        // Atualiza os dados do livro
+        // Update book data
         $book->update([
 //           'isbn' => $attributes['isbn'],
             'name' => $attributes['name'],

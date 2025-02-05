@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\BookController;
+use App\Http\Controllers\EditorController;
 use App\Http\Controllers\SearchController;
 use Illuminate\Support\Facades\Route;
 
@@ -13,6 +14,17 @@ Route::get('/books/{book}/edit', [BookController::class, 'edit'])
 Route::patch('/books/{book}', [BookController::class, 'update'])
     ->middleware('auth');
 Route::delete('/books/{book}', [BookController::class, 'destroy'])
+    ->middleware('auth');
+
+Route::get('/editors', [EditorController::class, 'index']);
+Route::get('/editors/create', [EditorController::class, 'create'])->middleware('auth');
+Route::post('/editors', [EditorController::class, 'store'])->middleware('auth');
+Route::get('/editors/{editor}', [EditorController::class, 'show']);
+Route::get('/editors/{editor}/edit', [EditorController::class, 'edit'])
+    ->middleware('auth');
+Route::patch('/editors/{editor}', [EditorController::class, 'update'])
+    ->middleware('auth');
+Route::delete('/editors/{editor}', [EditorController::class, 'destroy'])
     ->middleware('auth');
 
 Route::get('/search', SearchController::class);

@@ -34,8 +34,8 @@
         <div class="space-x-6 font-bold">
 {{--            <a href="/">Home</a>--}}
             <a href="/">Books</a>
-            <a href="#">Authors</a>
-            <a href="#">Editors</a>
+            <a href="/authors">Authors</a>
+            <a href="/editors">Editors</a>
         </div>
 
         @if (Route::has('login'))
