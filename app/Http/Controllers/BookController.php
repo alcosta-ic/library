@@ -18,11 +18,20 @@ class BookController extends Controller
      */
     public function index()
     {
-//        dd(Book::all());
+        $sortColumn = request('sort_by', 'id'); // order by id
+        $sortOrder = request('sort_order', 'desc');
+
+//        return view('books.index', [
+//            'books' => Book::with('authors')->orderBy('id', 'desc')->get(),
+//            'authors' => Author::all(),
+//            'editors' => Editor::all(),
+//        ]);
         return view('books.index', [
-            'books' => Book::with('authors')->orderBy('id', 'desc')->get(),
+            'books' => Book::with('authors')->orderBy($sortColumn, $sortOrder)->get(),
             'authors' => Author::all(),
             'editors' => Editor::all(),
+            'sortColumn' => $sortColumn,
+            'sortOrder' => $sortOrder
         ]);
     }
 

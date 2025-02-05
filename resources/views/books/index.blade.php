@@ -4,6 +4,19 @@
                <x-input name="q" placeholder="Find your book..." class="w-full" value=""/> {{-- value="" - clear input--}}
            </x-books.form>
 
+            {{-- Buttons for sorting books --}}
+            <div class="flex justify-center space-x-4 mb-6">
+                <a href="{{ route('books.index', ['sort_by' => 'name', 'sort_order' => request('sort_by') === 'name' && request('sort_order') === 'asc' ? 'desc' : 'asc']) }}"
+                   class="btn {{ request('sort_by') === 'name' ? 'btn-ghost btn-outline' : 'btn-ghost' }}">
+                    A-Z {{ request('sort_by') === 'name' ? (request('sort_order') === 'asc' ? '🔼' : '🔽') : '↕️' }}
+                </a>
+
+                <a href="{{ route('books.index', ['sort_by' => 'price', 'sort_order' => request('sort_by') === 'price' && request('sort_order') === 'asc' ? 'desc' : 'asc']) }}"
+                   class="btn {{ request('sort_by') === 'price' ? 'btn-ghost btn-outline' : 'btn-ghost' }}">
+                    Price {{ request('sort_by') === 'price' ? (request('sort_order') === 'asc' ? '🔼' : '🔽') : '↕️' }}
+                </a>
+            </div>
+
         <div class="flex justify-between items-center mb-6">
             <x-books.section-heading>Books</x-books.section-heading>
             @auth

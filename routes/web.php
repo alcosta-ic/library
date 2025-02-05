@@ -6,7 +6,7 @@ use App\Http\Controllers\EditorController;
 use App\Http\Controllers\SearchController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', [BookController::class, 'index']);
+Route::get('/', [BookController::class, 'index'])->name('books.index');
 Route::get('/books/create', [BookController::class, 'create'])->middleware('auth');
 Route::post('/books', [BookController::class, 'store'])->middleware('auth');
 Route::get('/books/{book}', [BookController::class, 'show']);
