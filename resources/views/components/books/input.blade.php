@@ -4,10 +4,10 @@
         'type' => 'text',
         'id' => $name,
         'name' => $name,
-        'class' => 'rounded-xl bg-white/10 border border-white/10 px-5 py-4 w-full',
+        'class' => 'rounded-xl bg-white border border-white/10 px-5 py-4 w-full',
         'value' => old($name)
     ];
 @endphp
-<x-forms.field :$label :$name>
+<x-books.field :$label :$name>
     <input {{ $attributes($defaults) }}>
-</x-forms.field>
+</x-books.field>

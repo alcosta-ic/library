@@ -32,8 +32,8 @@
             </a>
         </div>
         <div class="space-x-6 font-bold">
-            <a href="/">Home</a>
-            <a href="#">Books</a>
+{{--            <a href="/">Home</a>--}}
+            <a href="/">Books</a>
             <a href="#">Authors</a>
             <a href="#">Editors</a>
         </div>

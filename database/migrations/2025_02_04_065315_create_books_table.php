@@ -18,8 +18,8 @@ return new class extends Migration
             $table->string('name');
             $table->foreignIdFor(Editor::class)->constrained()->cascadeOnDelete();
             $table->text('bibliography');
-            $table->string('cover_image');
-            $table->decimal('price', 10, 2);
+            $table->string('cover_image')->nullable();
+            $table->decimal('price', 10, 2)->default(0);
             $table->timestamps();
         });
     }

@@ -1,21 +1,24 @@
 <x-layout>
     <div>
-        {{--        <x-forms.form action="/search" class="mt-6">--}}
-        {{--            <x-forms.input :label="false" name="q" placeholder="Find yor book..." />--}}
-        {{--        </x-forms.form>--}}
+           <x-books.form action="/search" class="my-6">
+               <x-input name="q" placeholder="Find your book..." class="w-full" value=""/> {{-- value="" - clear input--}}
+           </x-books.form>
 
-{{--        <h1 class="font-bold"> Books</h1>--}}
-        <x-books.section-heading>Books</x-books.section-heading>
+        <div class="flex justify-between items-center mb-6">
+            <x-books.section-heading>Books</x-books.section-heading>
+            @auth
+                <div class="space-x-6 font-bold flex">
+                    <a href="/books/create" class="btn btn-outline btn-neutral">Add New Book</a>
+                </div>
+            @endauth
+        </div>
 
-        <div class="grid lg:grid-cols-4 gap-4 mt-4">
+        <div class="grid lg:grid-cols-4 gap-4 mt-6">
             @foreach($books as $book)
-                <x-books.book-card :$book></x-books.book-card>
-                @endforeach
-            <x-books.book-card></x-books.book-card>
-            <x-books.book-card></x-books.book-card>
-            <x-books.book-card></x-books.book-card>
-            <x-books.book-card></x-books.book-card>
-            <x-books.book-card></x-books.book-card>
+                <a href="/books/{{ $book['id'] }}" >
+                    <x-books.book-card :book="$book" />
+                </a>
+            @endforeach
         </div>
     </div>
 </x-layout>
