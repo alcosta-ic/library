@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AuthorController;
 use App\Http\Controllers\BookController;
 use App\Http\Controllers\EditorController;
 use App\Http\Controllers\SearchController;
@@ -25,6 +26,17 @@ Route::get('/editors/{editor}/edit', [EditorController::class, 'edit'])
 Route::patch('/editors/{editor}', [EditorController::class, 'update'])
     ->middleware('auth');
 Route::delete('/editors/{editor}', [EditorController::class, 'destroy'])
+    ->middleware('auth');
+
+Route::get('/authors', [AuthorController::class, 'index']);
+Route::get('/authors/create', [AuthorController::class, 'create'])->middleware('auth');
+Route::post('/authors', [AuthorController::class, 'store'])->middleware('auth');
+Route::get('/authors/{author}', [AuthorController::class, 'show']);
+Route::get('/authors/{author}/edit', [AuthorController::class, 'edit'])
+    ->middleware('auth');
+Route::patch('/authors/{author}', [AuthorController::class, 'update'])
+    ->middleware('auth');
+Route::delete('/authors/{author}', [AuthorController::class, 'destroy'])
     ->middleware('auth');
 
 Route::get('/search', SearchController::class);

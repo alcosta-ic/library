@@ -18,7 +18,7 @@ class AuthorFactory extends Factory
     {
         return [
             'name' => fake()->name(),
-            'photo' => fake()->imageUrl(),
+            'photo' => 'photos/author-default.jpg',
         ];
     }
 }
