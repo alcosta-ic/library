@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Route;
 use Maatwebsite\Excel\Facades\Excel;
 
 Route::get('/', [BookController::class, 'index'])->name('books.index');
+//Route::get('/dash', [BookController::class, 'dashboard']);
 Route::get('/books/create', [BookController::class, 'create'])->middleware('auth');
 Route::post('/books', [BookController::class, 'store'])->middleware('auth');
 Route::get('/books/{book}', [BookController::class, 'show']);
@@ -19,7 +20,7 @@ Route::patch('/books/{book}', [BookController::class, 'update'])
 Route::delete('/books/{book}', [BookController::class, 'destroy'])
     ->middleware('auth');
 
-Route::get('/editors', [EditorController::class, 'index']);
+Route::get('/editors', [EditorController::class, 'index'])->name('editors.index');
 Route::get('/editors/create', [EditorController::class, 'create'])->middleware('auth');
 Route::post('/editors', [EditorController::class, 'store'])->middleware('auth');
 Route::get('/editors/{editor}', [EditorController::class, 'show']);
@@ -30,7 +31,7 @@ Route::patch('/editors/{editor}', [EditorController::class, 'update'])
 Route::delete('/editors/{editor}', [EditorController::class, 'destroy'])
     ->middleware('auth');
 
-Route::get('/authors', [AuthorController::class, 'index']);
+Route::get('/authors', [AuthorController::class, 'index'])->name('authors.index');
 Route::get('/authors/create', [AuthorController::class, 'create'])->middleware('auth');
 Route::post('/authors', [AuthorController::class, 'store'])->middleware('auth');
 Route::get('/authors/{author}', [AuthorController::class, 'show']);
@@ -52,7 +53,5 @@ Route::middleware([
     config('jetstream.auth_session'),
     'verified',
 ])->group(function () {
-    Route::get('/dashboard', function () {
-        return view('dashboard');
-    })->name('dashboard');
+    Route::get('/dashboard', [BookController::class, 'dashboard'])->name('dashboard');
 });

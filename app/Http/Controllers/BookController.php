@@ -35,6 +35,14 @@ class BookController extends Controller
         ]);
     }
 
+    public function dashboard()
+    {
+        $books = Book::latest()->take(8)->get();
+//        $books = Book::all();
+//        dd($books);
+        return view('dashboard', compact('books'));
+    }
+
     /**
      * Show the form for creating a new resource.
      */
