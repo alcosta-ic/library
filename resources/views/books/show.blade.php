@@ -30,24 +30,24 @@
             </div>
         </div>
     </div>
-    <div class="flex justify-between mt-10 space-x-2">
-        @auth
-            <div class="flex space-x-2">
-                <div class="space-x-6 font-bold flex">
-                    <a href="/books/{{$book->id}}/edit" class="btn btn-accent px-8">Edit Book</a>
-                </div>
-                <div class="space-x-6 font-bold flex">
-                    <form method="POST" action="/books/{{ $book->id }}">
-                        @csrf
-                        @method('DELETE')
-                        <button class="btn btn-error px-10" type="submit">Delete Book</button>
-                    </form>
-                </div>
-            </div>
-        @endauth
+{{--    <div class="flex justify-between mt-10 space-x-2">--}}
+{{--        @auth--}}
+{{--            <div class="flex space-x-2">--}}
+{{--                <div class="space-x-6 font-bold flex">--}}
+{{--                    <a href="/books/{{$book->id}}/edit" class="btn btn-accent px-8">Edit Book</a>--}}
+{{--                </div>--}}
+{{--                <div class="space-x-6 font-bold flex">--}}
+{{--                    <form method="POST" action="/books/{{ $book->id }}">--}}
+{{--                        @csrf--}}
+{{--                        @method('DELETE')--}}
+{{--                        <button class="btn btn-error px-10" type="submit">Delete Book</button>--}}
+{{--                    </form>--}}
+{{--                </div>--}}
+{{--            </div>--}}
+{{--        @endauth--}}
 
-            <div class="space-x-6 font-bold flex">
-                <a href="/" class="btn btn-neutral px-10">Back to Books</a>
-            </div>
-    </div>
+{{--            <div class="space-x-6 font-bold flex">--}}
+{{--                <a href="/" class="btn btn-neutral px-10">Back to Books</a>--}}
+{{--            </div>--}}
+{{--    </div>--}}
 </x-layout>

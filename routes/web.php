@@ -5,10 +5,14 @@ use App\Http\Controllers\AuthorController;
 use App\Http\Controllers\BookController;
 use App\Http\Controllers\EditorController;
 use App\Http\Controllers\SearchController;
+use App\Models\Author;
+use App\Models\Book;
+use App\Models\Editor;
 use Illuminate\Support\Facades\Route;
 use Maatwebsite\Excel\Facades\Excel;
 
 Route::get('/', [BookController::class, 'index'])->name('books.index');
+Route::get('/books/all', [BookController::class, 'allBooks'])->name('books.all-books');
 //Route::get('/dash', [BookController::class, 'dashboard']);
 Route::get('/books/create', [BookController::class, 'create'])->middleware('auth');
 Route::post('/books', [BookController::class, 'store'])->middleware('auth');
@@ -53,5 +57,11 @@ Route::middleware([
     config('jetstream.auth_session'),
     'verified',
 ])->group(function () {
-    Route::get('/dashboard', [BookController::class, 'dashboard'])->name('dashboard');
+    Route::get('/dashboard', function () {
+        return view('dashboard', [
+            'books' => Book::with('authors')->latest()->take(10)->get(),
+            'authors' => Author::all(),
+            'editors' => Editor::all(),
+        ]);
+    })->name('dashboard');
 });

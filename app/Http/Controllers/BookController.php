@@ -21,11 +21,6 @@ class BookController extends Controller
         $sortColumn = request('sort_by', 'id'); // order by id
         $sortOrder = request('sort_order', 'desc');
 
-//        return view('books.index', [
-//            'books' => Book::with('authors')->orderBy('id', 'desc')->get(),
-//            'authors' => Author::all(),
-//            'editors' => Editor::all(),
-//        ]);
         return view('books.index', [
             'books' => Book::with('authors')->orderBy($sortColumn, $sortOrder)->get(),
             'authors' => Author::all(),
@@ -35,13 +30,20 @@ class BookController extends Controller
         ]);
     }
 
-    public function dashboard()
-    {
-        $books = Book::latest()->take(8)->get();
-//        $books = Book::all();
-//        dd($books);
-        return view('dashboard', compact('books'));
+    public function allBooks(){
+        return view('books.all-books', [
+            'books' => Book::with('authors')->latest()->simplePaginate(9),
+            'authors' => Author::all(),
+            'editors' => Editor::all(),
+        ]);
     }
+
+//    public function dashboard()
+//    {
+//        $books = Book::latest()->take(8)->get();
+//
+//        return view('dashboard', compact('books'));
+//    }
 
     /**
      * Show the form for creating a new resource.
@@ -91,7 +93,7 @@ class BookController extends Controller
             $book->authors()->attach($authors['authors']);
         }
 
-        return redirect('/');
+        return redirect('/books/all');
     }
 
     /**
@@ -172,6 +174,6 @@ class BookController extends Controller
     public function destroy(Book $book)
     {
         $book->delete();
-        return redirect('/');
+        return redirect('/books/all');
     }
 }

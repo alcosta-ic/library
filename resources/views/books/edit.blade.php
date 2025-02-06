@@ -1,5 +1,15 @@
-<x-layout>
-    <x-books.section-heading>New Book</x-books.section-heading>
+<x-app-layout>
+{{--    <x-books.section-heading>New Book</x-books.section-heading>--}}
+    <x-slot name="header">
+        <div class="flex justify-between items-center">
+            <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+                {{ __('Edit Book') }}
+            </h2>
+{{--            <div class="space-x-6 font-bold flex">--}}
+{{--                <a href="/" class="btn btn-ghost">See all</a>--}}
+{{--            </div>--}}
+        </div>
+    </x-slot>
 
     <x-books.form method="POST" action="/books/{{ $book->id }}" enctype="multipart/form-data">
         @method('PATCH')
@@ -56,7 +66,7 @@
             </div>
         </div>
     </x-books.form>
-</x-layout>
+</x-app-layout>
 
 <script>
     document.getElementById('dropdownButton').addEventListener('click', function () {

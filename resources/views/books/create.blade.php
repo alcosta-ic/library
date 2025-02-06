@@ -1,5 +1,14 @@
-<x-layout>
-    <x-books.section-heading>New Book</x-books.section-heading>
+<x-app-layout>
+    <x-slot name="header">
+        <div class="flex justify-between items-center">
+            <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+                {{ __('New Books') }}
+            </h2>
+{{--            <div class="space-x-4 font-bold flex sm">--}}
+{{--                <a href="/books/create" class="btn btn-outline btn-neutral btn-sm">Add New Book</a>--}}
+{{--            </div>--}}
+        </div>
+    </x-slot>
 
     <x-books.form method="POST" action="/books" enctype="multipart/form-data">
         <x-books.input label="ISBN" name="isbn" placeholder="9792298333748" />
@@ -63,7 +72,7 @@
 
 
     </x-books.form>
-</x-layout>
+</x-app-layout>
 
 <script>
     document.getElementById('dropdownButton').addEventListener('click', function () {

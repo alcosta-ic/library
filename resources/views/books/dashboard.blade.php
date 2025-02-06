@@ -7,6 +7,7 @@
             </div>
         @endauth
     </div>
+{{--    <x-books.book-table :$books></x-books.book-table>--}}
     <div class="grid lg:grid-cols-4 gap-4 mt-6">
         @foreach($books as $book)
             <a href="/books/{{ $book['id'] }}" >
