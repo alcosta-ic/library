@@ -1,4 +1,5 @@
 <x-layout>
+
     <div>
            <x-books.form action="/search" class="my-6">
                <x-input name="q" placeholder="Find your book..." class="w-full" value=""/> {{-- value="" - clear input--}}
@@ -38,4 +39,5 @@
             @endforeach
         </div>
     </div>
+
 </x-layout>

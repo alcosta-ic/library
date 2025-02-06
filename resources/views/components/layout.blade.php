@@ -27,7 +27,7 @@
 
                 <button class="btn btn-ghost text-xl">
                     <img src="{{ Vite::asset('resources/images/logo-book.png') }}" alt="logo" class="inline-block">
-                    daisyUI
+                    Library
                 </button>
             </a>
         </div>

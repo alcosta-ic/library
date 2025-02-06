@@ -18,7 +18,7 @@ class EditorFactory extends Factory
     {
         return [
             'name' => fake()->name(),
-            'logo' => 'logos/editor-logo.jpg',
+            'logo' => 'logos/editor-logo.png',
         ];
     }
 }
