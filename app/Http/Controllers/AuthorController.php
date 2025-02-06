@@ -77,7 +77,7 @@ class AuthorController extends Controller
 
         $attributes = $request->validate([
             'name' => ['required'],
-            'photo' => ['required', File::types(['png', 'jpg', 'jpeg', 'webp'])],
+            'photo' => ['nullable', File::types(['png', 'jpg', 'jpeg', 'webp'])],
         ]);
 
         // Check if a new cover image has been uploaded

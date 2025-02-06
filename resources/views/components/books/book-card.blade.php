@@ -6,7 +6,7 @@
 {{--            src="https://th.bing.com/th/id/R.dd3fa9fbf6c8dea8f18dc3f12f8b2484?rik=CC64yhHdRiXf0g&pid=ImgRaw&r=0"--}}
             src="{{ asset('storage/' . $book->cover_image) }}"
             alt="Book"
-            class="max-w-32 image-full"/>
+            class="max-h-32 image-full"/>
     </figure>
     <div class="card-body text-center px-2 py-3">
         <div class="flex flex-col items-center justify-between">

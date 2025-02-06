@@ -73,7 +73,7 @@ class EditorController extends Controller
     {
         $attributes = $request->validate([
             'name' => ['required'],
-            'logo' => ['required', File::types(['png', 'jpg', 'jpeg', 'webp'])],
+            'logo' => ['nullable', File::types(['png', 'jpg', 'jpeg', 'webp'])],
         ]);
 
         // Check if a new cover image has been uploaded

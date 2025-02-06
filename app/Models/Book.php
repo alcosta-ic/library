@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -23,17 +24,24 @@ class Book extends Model
         return $this->belongsToMany(Author::class, 'book_author');
     }
 
+      protected function isbn(): Attribute
+    {
+        return Attribute::make(
+            set: fn ($value) => Crypt::encryptString($value),
+            get: fn ($value) => Crypt::decryptString($value),
+        );
+    }
 
     //Defining a Mutator to encrypt data before saving
-    public function setNameAttribute($value)
-    {
-       $this->attributes['name'] = Crypt::encryptString($value);
-    }
+//    public function setNameAttribute($value)
+//    {
+//       $this->attributes['name'] = Crypt::encryptString($value);
+//    }
 
     //Defining an Accessor to decrypt data when accessing
-    public function getNameAttribute($value)
-    {
-        return Crypt::decryptString($value);
-    }
+//    public function getNameAttribute($value)
+//    {
+//        return Crypt::decryptString($value);
+//    }
 
 }
